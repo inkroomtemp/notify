@@ -719,20 +719,7 @@ fn format_recipient_label(raw_header: &str, fallback_email: &str) -> String {
         return fallback_email.to_string();
     }
 
-    let normalized = cleaned.replace('"', "");
-    if let Some((name, email)) = normalized.split_once('<') {
-        let email = email.trim_end_matches('>').trim();
-        let name = name.trim();
-        if !name.is_empty() && !email.is_empty() && email.contains('@') {
-            return format!("{name}<{email}>");
-        }
-    }
-
-    if cleaned.contains('@') {
-        return cleaned.to_string();
-    }
-
-    fallback_email.to_string()
+    cleaned.to_string()
 }
 
 fn is_github_sender_header(raw_header: &str) -> bool {
