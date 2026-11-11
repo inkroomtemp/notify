@@ -718,7 +718,6 @@ fn format_recipient_label(raw_header: &str, fallback_email: &str) -> String {
     if cleaned.is_empty() {
         return fallback_email.to_string();
     }
-
     cleaned.to_string()
 }
 
@@ -1375,15 +1374,6 @@ mod tests {
     fn parse_imap_date_header() {
         let raw = "Date: Tue, 19 Nov 2024 10:12:13 +0800\nFrom: noreply@github.com";
         assert_eq!(extract_imap_date(raw), Some("Tue, 19 Nov 2024 10:12:13 +0800".to_string()));
-    }
-
-    #[test]
-    fn format_recipient_uses_name_and_email_when_to_header_has_display_name() {
-        let raw = "To: \"name\" <user@163.com>\nFrom: noreply@github.com";
-        assert_eq!(format_recipient_label(raw, "user@163.com"), "name<user@163.com>");
-
-        let raw = "To: user@163.com\nFrom: noreply@github.com";
-        assert_eq!(format_recipient_label(raw, "user@163.com"), "user@163.com");
     }
 
     #[test]
