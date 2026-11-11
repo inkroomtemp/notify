@@ -3,14 +3,14 @@
 一个基于 Rust 的 QQ 机器人通知服务，具备两项核心能力：
 
 - 通过 QQ Bot WebSocket 长连接接收和回复 C2C 消息
-- 轮询 163 IMAP 邮箱，识别 GitHub 通知邮件，并转发到 QQ 用户
+- 通过IMAP轮询邮件，识别 GitHub 通知邮件，并通过 QQ机器人 通知指定用户
 
 
 ## 功能概览
 
 - 支持主动发送消息和回复消息
 - 支持重试消息队列，失败时写入本地 pending 文件重试
-- 监控多个 163 邮箱（通过 `IMAP_ACCOUNTS` 配置）
+- 监控多个邮箱（通过 `IMAP_ACCOUNTS` 配置）
 
 ## 环境变量
 
@@ -26,6 +26,19 @@
 ```bash
 export IMAP_ACCOUNTS='user1@163.com|password1; user2@163.com|password2'
 ```
+
+默认为163的imap地址，如果需要其他邮箱，可以这样写
+
+```bash
+export IMAP_ACCOUNTS='imap.other.com#993#user1@163.com|password1'
+```
+
+或者不指定端口，默认使用993
+
+```bash
+export IMAP_ACCOUNTS='imap.other.com#user1@163.com|password1'
+```
+
 
 也支持单邮箱：
 

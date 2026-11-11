@@ -1,0 +1,42 @@
+*.pyc
+.DS_Store
+.run
+*.log
+target
+*.iml
+*.ipr
+*.iws
+.idea/
+
+.settings/
+*.class
+*.project
+*.classpath
+logs
+
+
+*local.xml
+
+dependency-reduced-pom.xml
+
+#vscode
+.vscode
+effective-pom.xml
+
+# Git worktrees
+.worktrees/
+
+# AI agent runtime artifacts
+.ai/
+.codegraph/
+.superpowers/
+.traces/
+.docker-build/
+
+# Claude Code local setting
+.claude/settings.local.json
+.claude/worktrees
+CLAUDE.local.md
+.mcp.json
+
+data
